@@ -20,14 +20,13 @@ This project analyzes historical advertising data (`Advertising.csv`) and builds
 - `sales_prediction.py`
 ---
 
-## First run the `clean_data.py` which will clean the data and then run 'sales_prediction.py'
-
 ### 1. Install Required Packages
 
 Make sure you have Python 3.x installed, then run:
 
 ```bash
 pip install pandas matplotlib seaborn scikit-learn
-
+```
+### 2. First run the `clean_data.py` which will clean the data and then run `sales_prediction.py`
 
 
