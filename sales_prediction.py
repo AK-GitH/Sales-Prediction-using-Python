@@ -4,12 +4,17 @@ import matplotlib.pyplot as plt
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LinearRegression
 from sklearn.metrics import mean_squared_error, r2_score
+import matplotlib.pyplot as plt
+import seaborn as sns
 
-data = pd.read_csv("Advertising.csv")
+data = pd.read_csv("cleaned_advertising.csv")
 
 # data allocation for training
 X = data[["TV", "Radio", "Newspaper"]]
 y = data["Sales"]
+
+print("\nFeature Correlations:\n")
+print(data.corr())
 
 # split data into training and testing
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
@@ -31,11 +36,20 @@ r2 = r2_score(y_test, y_pred)
 print(f"\nMean Squared Error: {mse:.2f}")
 print(f"R-squared: {r2:.2f}")
 
-# bar plot of feature importance
-coef = pd.Series(model.coef_, index=X.columns)
-coef.plot(kind='bar', color='skyblue')
-plt.title("Feature Influence on Sales")
-plt.ylabel("Coefficient Value")
-plt.xlabel("Advertising Channel")
-plt.tight_layout()
+plt.figure(figsize=(6, 6))
+sns.scatterplot(x=y_test, y=y_pred)
+plt.xlabel("Actual Sales")
+plt.ylabel("Predicted Sales")
+plt.title("Actual vs Predicted Sales")
+plt.plot([y_test.min(), y_test.max()], [y_test.min(), y_test.max()], 'r--')
+plt.show()
+
+residuals = y_test - y_pred
+
+plt.figure(figsize=(6, 4))
+sns.scatterplot(x=y_pred, y=residuals)
+plt.axhline(0, color='red', linestyle='--')
+plt.xlabel("Predicted Sales")
+plt.ylabel("Residuals")
+plt.title("Residuals vs Predicted")
 plt.show()
