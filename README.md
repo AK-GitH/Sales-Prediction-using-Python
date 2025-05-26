@@ -1,4 +1,4 @@
-# 📈 Sales Prediction using Python
+# Sales Prediction using Python
 
 This project demonstrates how to **predict product sales** based on advertising expenditure across three media channels: **TV**, **Radio**, and **Newspaper**. It uses **Linear Regression**, a foundational machine learning algorithm, to model the relationship between advertising spend and resulting sales.
 
@@ -28,5 +28,3 @@ Make sure you have Python 3.x installed, then run:
 pip install pandas matplotlib seaborn scikit-learn
 ```
 ### 2. Run the `clean_data.py` which will clean the data and then run `sales_prediction.py`
-
-
